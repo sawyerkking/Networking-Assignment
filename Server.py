@@ -1,4 +1,4 @@
-import socket
+22import socket
 
 #create server socket
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -47,6 +47,17 @@ while 1:
 
         else:
             client.send(msg2.encode('ascii', 'strict'))
+            print("reply sent.")
+            
+    elif data=="portstatus":
+
+        msg3 = "Port is listening. Press ENTER to send another message or type 'quit' to end connection."
+        msg4 = "Port is closed. Press ENTER to send another message or type 'quit' to end connection."
+        if ip == socket.gethostbyname(name) and port == 4321:
+            client.send(msg3.encode('ascii', 'strict'))
+
+        else:
+            client.send(msg4.encode('ascii', 'strict'))
             print("reply sent.")
 
     else:
